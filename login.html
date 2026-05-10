@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Firebase Login</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Login</h2>
+
+<input
+type="email"
+id="email"
+placeholder="Enter Email">
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password">
+
+<button onclick="login()">
+Login
+</button>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCF8BwCm4Fa3TrmV7wmGOs1-cFWlkW0_lE",
+
+authDomain: "chandan-classes-d0f0e.firebaseapp.com",
+
+projectId: "chandan-classes-d0f0e",
+
+storageBucket: "chandan-classes-d0f0e.firebasestorage.app",
+
+messagingSenderId: "802279164033",
+
+appId: "1:802279164033:web:931d4c3c8bf9f3d9c9e580",
+
+measurementId: "G-S8XFS7XC2N"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+window.login = function(){
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+signInWithEmailAndPassword(
+auth,
+email,
+password
+)
+
+.then((userCredential)=>{
+
+alert("Login Successful");
+
+window.location.href =
+"dashboard.html";
+
+})
+
+.catch((error)=>{
+
+alert(error.message);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
